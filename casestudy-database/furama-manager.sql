@@ -233,21 +233,22 @@ insert into DichVu values
 
 -- thêm dữ liệu cho bảng khách hàng 
 insert into KhachHang values
-(1,'A','1990-10-10','12345','123456789','a@gmail.com','Đà Nẵng',1),
-(2,'B','1990-10-10','12345','123456789','b@gmail.com','Đà Nẵng',1),
-(3,'C','1990-10-10','12345','123456789','c@gmail.com','Quảng Trị',1),
-(4,'D','1990-10-10','12345','123456789','d@gmail.com','Quảng TRị',1),
-(5,'E','1990-10-10','12345','123456789','e@gmail.com','Quảng Nam',1),
-(6,'F','1990-10-10','12345','123456789','f@gmail.com','Quảng Nam',2),
-(7,'G','1990-10-10','12345','123456789','g@gmail.com','Huế',2),
-(8,'H','1990-10-10','12345','123456789','h@gmail.com','Huế',2),
-(9,'I','1990-10-10','12345','123456789','i@gmail.com','Quảng Bình',2),
-(10,'K','1990-10-10','12345','123456789','k@gmail.com','Quảng Bình',2),
-(11,'L','1990-10-10','12345','123456789','l@gmail.com','Quảng Ngãi',3),
-(12,'M','1990-10-10','12345','123456789','m@gmail.com','Quảng Ngãi',3),
-(13,'N','1990-10-10','12345','123456789','n@gmail.com','Quy Nhơn',3),
-(14,'O','1990-10-10','12345','123456789','o@gmail.com','Quy Nhơn',3),
-(15,'S','1990-10-10','12345','123456789','s@gmail.com','Quy Nhơn',3);
+(1,'Huỳnh Văn Thịnh','1990-10-10','12345','123456789','a@gmail.com','Đà Nẵng',1),
+(2,'Phạm Vũ','1990-10-10','12345','123456789','b@gmail.com','Đà Nẵng',1),
+(3,'Vũ Lê Tường','1990-10-10','12345','123456789','c@gmail.com','Quảng Trị',1),
+(4,'Võ Đức Việt','1990-10-10','12345','123456789','d@gmail.com','Quảng TRị',1),
+(5,'Dương Nhật Huy','1990-10-10','12345','123456789','e@gmail.com','Quảng Nam',1),
+(6,'Nguyễn Văn Hiếu','1990-10-10','12345','123456789','f@gmail.com','Quảng Nam',2),
+(7,'Nguyễn Ngọc Anh Quốc','1990-10-10','12345','123456789','g@gmail.com','Huế',2),
+(8,'Nguyễn Tiến Quốc','1990-10-10','12345','123456789','h@gmail.com','Huế',2),
+(9,'Trần Huỳnh Kim Ngân','1990-10-10','12345','123456789','i@gmail.com','Quảng Bình',2),
+(10,'Nguyễn Hải Đăng','1990-10-10','12345','123456789','k@gmail.com','Quảng Bình',2),
+(11,'Nguyễn Văn Hải','1990-10-10','12345','123456789','l@gmail.com','Quảng Ngãi',3),
+(12,'Trần Quang Trung','1990-10-10','12345','123456789','m@gmail.com','Quảng Ngãi',3),
+(13,'Trần Chí Trung','1990-10-10','12345','123456789','n@gmail.com','Quy Nhơn',3),
+(14,'Đỗ Hùng Dũng','1990-10-10','12345','123456789','o@gmail.com','Quy Nhơn',3),
+(15,'Cao Mộng','1990-10-10','12345','123456789','s@gmail.com','Quy Nhơn',3),
+(16,'Cao Mộng','1990-10-10','12345','123456789','s@gmail.com','Quy Nhơn',3);
 
 -- thêm dữ liệu bảng nhân viên
 insert into NhanVien values
@@ -289,11 +290,14 @@ insert into HopDong values
 (12,'2000-10-10','2000-11-11',1000,100000,3,2,3),
 (13,'2000-10-10','2000-11-11',1000,100000,3,3,3),
 (14,'2000-10-10','2000-11-11',1000,100000,3,4,3),
-(15,'2000-10-10','2000-11-11',1000,100000,3,5,3);
+(15,'2000-10-10','2000-11-11',1000,100000,3,4,3),
+(16,'2018-10-10','2000-11-11',1000,100000,3,4,3),
+(17,'2019-10-10','2000-11-11',1000,100000,3,5,3);
 
 -- thêm dữ liệu cho bảng hợp đồng chi tiết
 insert into HopDongChiTiet values 
 (1,1,1,1),
+(1,1,2,1),
 (2,2,2,1),
 (3,3,3,1),
 (4,4,4,1),
@@ -333,14 +337,70 @@ group by k.IDKhachHang;
 
 select k.IDKhachHang,k.HoTen,l.TenLoaiKhach,h.IDHopDong,t.TenDichVu,h.NgayLamHopDong,h.NgayKetThuc,t.ChiPhiThue + (dv.DonVi*dv.Gia) as 'Tổng Tiền'
 from KhachHang k
-join LoaiKhach l on k.IDLoaiKhach = l.IDLoaiKhach
-join HopDong h on h.IDKhachHang = k.IDKhachHang
-join DichVu t on t.IDdichVu = h.IDDichVu
-join HopDongChiTiet hdct on hdct.IDHopDong = h.IDHopDong
-join DichVuDiKem dv on dv.IDDichVuDiKem =  hdct.IDDichVuDiKem;
+left join HopDong h on k.IDKhachHang = h.IDKhachHang 
+left join LoaiKhach l on k.IDLoaiKhach = l.IDLoaiKhach
+left join DichVu t on t.IDdichVu = h.IDDichVu
+left join HopDongChiTiet hdct on hdct.IDHopDong = h.IDHopDong
+left join DichVuDiKem dv on dv.IDDichVuDiKem =  hdct.IDDichVuDiKem;
+
+-- 6.	Hiển thị IDDichVu, TenDichVu, DienTich, ChiPhiThue, TenLoaiDichVu
+--  của tất cả các loại Dịch vụ chưa từng được Khách hàng thực hiện đặt từ quý 1 của năm 2019 (Quý 1 là tháng 1, 2, 3).
+
+select dv.IDDichVu,dv.TenDichVu,dv.DienTich,dv.ChiPhiThue,ldv.TenLoaiDichVu,hd.ngaylamhopdong
+from DichVu dv 
+left join LoaiDichVu ldv on ldv.IDLoaiDichVu = dv.IDLoaiDichVu
+left join HopDong hd on hd.IDDichVu = dv.IDDichVu
+where (datediff(hd.ngaylamhopdong,'2019-01-01')<0) or (datediff(hd.ngaylamhopdong,'2019-03-31')>0);
 
 
+-- 7.	Hiển thị thông tin IDDichVu, TenDichVu, DienTich, SoNguoiToiDa, ChiPhiThue, TenLoaiDichVu
+-- của tất cả các loại dịch vụ đã từng được Khách hàng đặt phòng trong năm 2018 nhưng chưa từng được Khách hàng đặt phòng  trong năm 2019.
 
+select dv.IDDichVu, dv.TenDichVu, dv.DienTich, dv.SoNguoiToiDa, dv.ChiPhiThue, ldv.TenLoaiDichVu 
+from DichVu dv
+left join LoaiDichVu ldv on ldv.IDLoaiDichVu = dv.IDLoaiDichVu
+left join HopDong hd on hd.IDDichVu = dv.IDDichVu
+where (hd.ngaylamhopdong between '2018-01-01' and '2018-12-30') and (hd.ngaylamhopdong not between '2019-01-01' and '2019-12-30'); 
 
+-- 8.	Hiển thị thông tin HoTenKhachHang có trong hệ thống, với yêu cầu HoThenKhachHang không trùng nhau.
+-- Học viên sử dụng theo 3 cách khác nhau để thực hiện yêu cầu trên
+-- cách 1 :
+select distinct HoTen from KhachHang;
+-- cách 2 :
+select HoTen from KhachHang group by HoTen having count(HoTen) >= 1; 
+-- cách 3 :
+select HoTen from KhachHang 
+union 
+select HoTen from KhachHang ;
 
- 
+-- 9.Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng 
+-- trong năm 2019 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
+
+-- 10.	Hiển thị thông tin tương ứng với từng Hợp đồng thì đã sử dụng bao nhiêu Dịch vụ đi kèm. 
+-- Kết quả hiển thị bao gồm IDHopDong, NgayLamHopDong, NgayKetthuc, TienDatCoc, SoLuongDichVuDiKem 
+-- (được tính dựa trên việc count các IDHopDongChiTiet).
+
+select h.IDHopDong, h.NgayLamHopDong, h.NgayKetthuc, h.TienDatCoc, count(hc.IDDichVuDiKem) as 'SoLuongDichVuDiKem'
+from HopDong h
+join HopDongChiTiet hc on hc.IDHopDong = h.IDHopDong
+group by h.IDHopDong;
+
+-- 11.	Hiển thị thông tin các Dịch vụ đi kèm đã được sử dụng bởi những Khách hàng
+-- có TenLoaiKhachHang là “Diamond” và có địa chỉ là “Vinh” hoặc “Quảng Ngãi”.
+
+select dvdk.IDDichVuDiKem,dvdk.TenDichVuDiKem,dvdk.Gia,dvdk.DonVi,dvdk.TrangThaiKhaDung,kh.HoTen
+from DichVuDiKem dvdk
+join HopDongChiTiet hdct on dvdk.IDDichVuDiKem = hdct.IDDichVuDiKem
+join HopDong hd on hdct.IDHopDong = hd.IDHopDong
+join KhachHang kh on kh.IDKhachHang = hd.IDKhachHang
+join LoaiKhach lk on lk.IDLoaiKhach = kh.IDLoaiKhach
+where lk.TenLoaiKhach  = 'Diamond' and (kh.DiaChi = 'Quảng Nam' or kh.DiaChi = 'Đà Nẵng') 
+group by kh.HoTen;
+
+-- 12.	Hiển thị thông tin IDHopDong, TenNhanVien, TenKhachHang, SoDienThoaiKhachHang, TenDichVu, SoLuongDichVuDikem
+-- (được tính dựa trên tổng Hợp đồng chi tiết), TienDatCoc của tất cả các dịch vụ đã từng được khách hàng đặt 
+-- vào 3 tháng cuối năm 2019 nhưng chưa từng được khách hàng đặt vào 6 tháng đầu năm 2019.
+
+select IDHopDong, TenNhanVien, TenKhachHang, SoDienThoaiKhachHang, TenDichVu,  count(hc.IDDichVuDiKem) as 'SoLuongDichVuDiKem'
+from HopDong hd
+join NhanVien nv on nv.
