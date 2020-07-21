@@ -85,11 +85,8 @@ v_productAmount double,
 v_productDescription varchar(20),
 v_productStatus varchar(10))
 begin
-start transaction;
-     if  exists (select 1 from products where productName = v_productName) then
 		 update products set productCode = v_productCode, productPrice = v_productPrice, 
 		productAmount = v_productAmount, productDescription = v_productDescription, productStatus = v_productStatus where  productName = v_productName;
-    end if;
 end;// 
 delimiter ;
 
@@ -100,11 +97,7 @@ call update_products(2,130,'banh',1,1,'banh mi','con');
 delimiter  //
 create procedure delete_product(v_id int)
 begin
-start transaction;
-	delete from products where v_id = id;
-   if not exists (select 1 from products where id = v_id)then
-		rollback;
-    end if;
+	delete from products where id = v_id;
     end;//
     delimiter ;
     
