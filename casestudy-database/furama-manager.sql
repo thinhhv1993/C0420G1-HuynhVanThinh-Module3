@@ -297,7 +297,6 @@ insert into HopDong values
 -- thêm dữ liệu cho bảng hợp đồng chi tiết
 insert into HopDongChiTiet values 
 (1,1,1,1),
-(1,1,2,1),
 (2,2,2,1),
 (3,3,3,1),
 (4,4,4,1),
@@ -311,7 +310,8 @@ insert into HopDongChiTiet values
 (12,12,2,1),
 (13,13,3,1),
 (14,14,4,1),
-(15,15,5,1);
+(15,1,2,1),
+(16,15,5,1);
 
 
 -- hiển thị tên nhân viên
@@ -401,6 +401,45 @@ group by kh.HoTen;
 -- (được tính dựa trên tổng Hợp đồng chi tiết), TienDatCoc của tất cả các dịch vụ đã từng được khách hàng đặt 
 -- vào 3 tháng cuối năm 2019 nhưng chưa từng được khách hàng đặt vào 6 tháng đầu năm 2019.
 
-select IDHopDong, TenNhanVien, TenKhachHang, SoDienThoaiKhachHang, TenDichVu,  count(hc.IDDichVuDiKem) as 'SoLuongDichVuDiKem'
+select hd.IDHopDong, nv.HoTen, kh.HoTen, kh.SDT, dv.TenDichVu,  count(hdct.IDDichVuDiKem) as 'SoLuongDichVuDiKem' 
 from HopDong hd
-join NhanVien nv on nv.
+join NhanVien nv on nv.IDNhanVien = hd.IDNhanVien
+join KhachHang kh on kh.IDKhachHang = hd.IDKhachHang
+join DichVu dv on dv.IDDichVu = hd.IDDichVu
+join HopDongChiTiet hdct on hdct.IDHopDong = hd.IDHopDong
+where (hd.NgayLamHopDong between '2019-10-01' and '2019-12-31') and (hd.NgayLamHopDong not between '2019-01-01' and '2019-06-30')
+group by hdct.IDHopDong;
+-- chưa đúng
+
+-- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng.
+-- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
+select kh.HoTen, dvdk.TenDichVuDiKem , count(dvdk.TenDichVuDiKem) as 'soluong'
+from HopDong hd
+join KhachHang kh on kh.IDKhachHang = hd.IDKhachHang
+join DichVu dv on dv.IDDichVu = hd.IDDichVu
+join HopDongChiTiet hdct on hdct.IDHopDong = hd.IDHopDong
+join DichVuDiKem dvdk on dvdk.IDDichVuDiKem = hdct.IDDichVuDiKem
+group by kh.HoTen, dvdk.TenDichVuDiKem;
+
+-- 14.	Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất.
+-- Thông tin hiển thị bao gồm IDHopDong, TenLoaiDichVu, TenDichVuDiKem, SoLanSuDung.
+select hd.IDHopDong, ldv.TenLoaiDichVu, dvdk.TenDichVuDiKem, count(dvdk.TenDichVuDiKem) as soluong
+from HopDong hd
+join DichVu dv on dv.IDDichVu = hd.IDDichVu
+join LoaiDichVu ldv on ldv.IDLoaiDichVu = dv.IDLoaiDichVu
+join HopDongChiTiet hdct on hdct.IDHopDong = hd.IDHopDong
+join DichVuDiKem dvdk on dvdk.IDDichVuDiKem =  hdct.IDDichVuDiKem
+group by ldv.TenLoaiDichVu,dvdk.TenDichVuDiKem;
+
+-- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm 
+-- IDNhanVien, HoTen, TrinhDo, TenBoPhan, SoDienThoai, DiaChi mới chỉ lập được tối đa 3 hợp đồng từ năm 2018 đến 2019.
+
+select nv.IDNhanVien, nv.HoTen, td.TrinhDo, vt.TenViTri, bp.TenBoPhan, nv.SDT, nv.DiaChi
+from NhanVien nv 
+left join HopDong hd on hd.IDNhanVien = nv.IDNhanVien
+join TrinhDo td on td.IDTrinhDo = nv.IDTrinhDo
+join ViTri vt on vt.IDViTri = nv.IDViTri 
+join BoPhan bp on bp.IDBoPhan = nv.IDBoPhan
+where year(hd.NgayLamHopDong) between '2018'and '2019'
+group by hd.IDHopDong, hd.IDNhanVien
+having count(hd.IDNhanVien) <=3; 
