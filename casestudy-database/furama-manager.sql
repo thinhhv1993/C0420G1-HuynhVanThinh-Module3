@@ -130,7 +130,7 @@ add foreign key (IDDichVu) references DichVu(IDDichVu);
 
 -- thêm khoá ngoại hợp đồng cho bảng hợp đồng chi tiết
 alter table HopDongChiTiet
-add foreign key (IDHopDong) references HopDong(IDHopDong);
+add foreign key (IDHopDong) references HopDong(IDHopDong) on delete cascade;
 
 -- thêm khoá ngoại dịch vụ đi kèm cho bảng hợp đồng chi tiết
 alter table HopDongChiTiet
@@ -138,7 +138,7 @@ add foreign key (IDDichVuDiKem) references DichVuDiKem(IDDichVuDiKem);
 
 -- thêm khoá ngoại khách hàng cho bảng hợp đồng 
 alter table HopDong
-add foreign key (IDKhachHang) references KhachHang(IDKhachHang);
+add foreign key (IDKhachHang) references KhachHang(IDKhachHang) on delete cascade;
 
 -- thêm khoá ngoại loại khách cho bảng khách hàng 
 alter table KhachHang
@@ -146,7 +146,7 @@ add foreign key (IDLoaiKhach) references LoaiKhach(IDLoaiKhach);
 
 -- thêm khoá ngoại nhân viên cho bảng hợp đồng
 alter table HopDong
-add foreign key (IDNhanVien) references NhanVien(IDNhanVien);
+add foreign key (IDNhanVien) references NhanVien(IDNhanVien) on delete cascade;
 
 -- thêm khoá ngoại vị trí cho bảng nhân viên 
 alter table NhanVien
@@ -437,12 +437,58 @@ group by ldv.TenLoaiDichVu,dvdk.TenDichVuDiKem;
 
 -- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm 
 -- IDNhanVien, HoTen, TrinhDo, TenBoPhan, SoDienThoai, DiaChi mới chỉ lập được tối đa 3 hợp đồng từ năm 2018 đến 2019.
-
+select * from (
 select nv.IDNhanVien, nv.HoTen , td.TrinhDo, bp.TenBoPhan, nv.SDT , nv.DiaChi ,count(hd.IDNhanVien) as 'số lượng hợp đồng'
 from NhanVien nv 
 left join HopDong hd on hd.IDNhanVien = nv.IDNhanVien
-left join TrinhDo td on td.IDTrinhDo = nv.IDTrinhDo
-left join BoPhan bp on Bp.IDBoPhan = nv.IDBoPhan
-where (year(hd.NgayLamHopDong) between '2018' and '2019') or (nv.IDNhanVien not in (select HopDong.IDNhanVien from HopDong))
+ join TrinhDo td on td.IDTrinhDo = nv.IDTrinhDo
+ join BoPhan bp on Bp.IDBoPhan = nv.IDBoPhan
+where (year(hd.NgayLamHopDong)  between '2018' and '2019') or(nv.IDNhanVien not in (select HopDong.IDNhanVien from HopDong))
 group by nv.IDNhanVien
-having  count(hd.IDNhanVien) <=3 ;
+having  count(hd.IDNhanVien) <=3 
+union 
+select nv.IDNhanVien, nv.HoTen , td.TrinhDo, bp.TenBoPhan, nv.SDT , nv.DiaChi , 'số lượng hợp đồng' = -1
+from NhanVien nv 
+left join HopDong hd on hd.IDNhanVien = nv.IDNhanVien
+join TrinhDo td on td.IDTrinhDo = nv.IDTrinhDo
+join BoPhan bp on Bp.IDBoPhan = nv.IDBoPhan
+where nv.IDNhanVien in (select HopDong.IDNhanVien from HopDong)
+group by nv.IDNhanVien) as t
+group by IDNhanVien;
+
+-- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.
+delete from NhanVien nv where nv.IDNhanVien in ( select IDNhanVien from  (select * from NhanVien nv
+where nv.IDNhanVien not in (select HopDong.IDNhanVien from HopDong where year(HopDong.NgayLamHopDong) not between '2017' and '2019')) as t ) ;
+
+-- 17.	Cập nhật thông tin những khách hàng có TenLoaiKhachHang từ  Platinium lên Diamond,
+-- chỉ cập nhật những khách hàng đã từng đặt phòng với tổng Tiền thanh toán trong năm 2019 là lớn hơn 10.000.000 VNĐ.
+create view 2019_10tr as 
+select kh.IDKhachHang, kh.IDLoaiKhach, kh.HoTen, kh.NgaySinh, kh.SoCMND, kh.SDT, kh.Email, kh.DiaChi 
+from KhachHang kh 
+join HopDong hd on hd.IDKhachHang = kh.IDKhachHang
+join LoaiKhach lk on lk.IDLoaiKhach = kh.IDLoaiKhach
+where year(hd.NgayLamHopDong) = '2019' and lk.TenLoaiKhach = 'Platinium'
+group by hd.IDKhachHang
+having sum(hd.TongTien) > 10000000;
+
+update LoaiKhach set TenLoaiKhachHang = 'Diamond' where IDLoaiKhach in ( select IDLoaiKhach from 2019_10tr);
+
+-- 18.	Xóa những khách hàng có hợp đồng trước năm 2016 (chú ý ràngbuộc giữa các bảng).
+delete from KhachHang kh where kh.IDKhachHang in (select IDKhachHang from HopDong where year(NgayLamHopDong) < '2016'group by IDKhachHang);
+
+-- 19.	Cập nhật giá cho các Dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2019 lên gấp đôi.
+update DichVuDiKem set Gia = Gia * 10 where IDDichVuDiKem in (
+ select hdct.IDDichVuDiKem from HopDongChiTiet hdct 
+ join HopDong hd on hd.IDHopDong = hdct.IDHopDong 
+ where year(hd.NgayLamHopDong) = '2019'
+ group by hdct.IDHopDongChiTiet
+ having count(hdct.IDDichVuDiKem) > 10);
+ 
+ -- 20.	Hiển thị thông tin của tất cả các Nhân viên và Khách hàng có trong hệ thống, 
+ -- thông tin hiển thị bao gồm ID (IDNhanVien, IDKhachHang), HoTen, Email, SoDienThoai, NgaySinh, DiaChi. 
+ 
+ select nv.IDNhanVien as '(IDNhanVien, IDKhachHang)', nv.HoTen, nv.Email, nv.SDT, nv.NgaySinh, nv.DiaChi
+ from NhanVien nv
+ union 
+ select kh.IDKhachHang as '(IDNhanVien, IDKhachHang)', kh.HoTen, kh.Email, kh.SDT, kh.NgaySinh, kh.DiaChi
+ from KhachHang kh
