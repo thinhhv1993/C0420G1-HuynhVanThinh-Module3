@@ -1,0 +1,72 @@
+body {
+    margin:0;
+    background-color: gainsboro;
+}
+.navbar {
+    overflow: hidden;
+    background-color: #4267b1;
+    position: fixed;
+    top: 0px ;
+    width: 100%;
+}
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 5px 8px;
+    text-decoration: none;
+    font-size: 10px;
+    position: relative;
+    left: 50px;
+}
+.img{
+    width :30px;
+    height :30px;
+}
+.input{
+    width: 400px;
+    height: 30px;
+}
+.img1{
+    position: relative;
+    left: 200px;
+    width: 450px;
+    height: 35px;
+}
+.img2{
+    width :190px;
+    height :335px;
+}
+.left{
+    margin: 57px 58px;
+    width: 260px;
+    min-height: 400px;
+    float:left;
+    position: fixed;
+}
+.content{
+    margin: 55px 260px;
+    width: 540px;
+    min-height: 160px;
+    float:left;
+}
+.content1{
+    margin: -30px 260px;
+    width: 540px;
+    min-height: 251px;
+    float:left;
+}
+.right{
+    margin: 46px 1347px 587px 1145px;
+    width: 260px;
+    min-height: 400px;
+    float:right;
+    position: fixed;
+}
+.content2{
+    margin: 30px 260px;
+    width: 540px;
+    min-height: 251px;
+    float:left;
+}

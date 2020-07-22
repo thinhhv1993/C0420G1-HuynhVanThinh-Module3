@@ -1,0 +1,101 @@
+body{
+    font-family: Arial;
+    background-color: darkgray;
+}
+#menu{
+    height: 50px;
+    padding:0;
+    width: 100%;
+    margin: -10px;
+    background-color: #222222;
+    border: 1px solid #CDCDCD;
+    position: fixed;
+}
+#menu ul, #menu li{
+    padding:0;
+    margin:0px 0px;
+}
+
+#menu li{
+    position: relative;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+
+#menu li a{
+    width:100px;
+    height: 50px;
+    display: block;
+    text-decoration:none;
+    text-align: center;
+    line-height: 50px;
+    background-color: black;
+    color: white;
+}
+
+#menu ul ul li a{
+    width: 200px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+#menu li a:hover{
+    background-color: red;
+}
+
+#menu ul ul{
+    position: absolute;
+    top: 50px;
+    left: 15px;
+    visibility: hidden;
+}
+
+#menu ul li:hover ul{
+    visibility: visible;
+}
+#logout{
+    width: 28px;
+    height: 20px;
+    float: left;
+    margin: -1px 0px 0px 780px;
+}
+#content{
+    width: 60%;
+    min-height: 600px;
+    border: 1px solid #CDCDCD;
+    float:left;
+    margin-top:42px;
+    margin-left: 250px;
+    background-color: white;
+}
+#content1{
+    width: 15%;
+    min-height: 100px;
+    border: 1px solid #CDCDCD;
+    float:left;
+    margin-top:100px;
+    margin-left: 1100px;
+    position: absolute;
+    background-color: #f4f4f2;
+}
+#content2{
+    width: 15%;
+    min-height: 100px;
+    border: 1px solid #CDCDCD;
+    float:left;
+    margin-top:250px;
+    margin-left: 1100px;
+    position: absolute;
+    background-color: #f4f4f2;
+}
+#menu1{
+    height: 50px;
+    padding:0;
+    width: 100%;
+    bottom: 0px;
+    right: 0px;
+    background-color: #222222;
+    position: fixed;
+}

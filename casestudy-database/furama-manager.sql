@@ -376,6 +376,11 @@ select HoTen from KhachHang ;
 -- 9.Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng 
 -- trong năm 2019 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
 
+select month(hd.NgayLamHopDong) as tháng, count(hd.IDHopDong) as 'số lượng', sum(hd.TongTien) as 'doanh thu'
+from HopDong hd
+where year(hd.NgayLamHopDong) = '2019'
+group by hd.IDKhachHang;
+
 -- 10.	Hiển thị thông tin tương ứng với từng Hợp đồng thì đã sử dụng bao nhiêu Dịch vụ đi kèm. 
 -- Kết quả hiển thị bao gồm IDHopDong, NgayLamHopDong, NgayKetthuc, TienDatCoc, SoLuongDichVuDiKem 
 -- (được tính dựa trên việc count các IDHopDongChiTiet).
@@ -401,15 +406,14 @@ group by kh.HoTen;
 -- (được tính dựa trên tổng Hợp đồng chi tiết), TienDatCoc của tất cả các dịch vụ đã từng được khách hàng đặt 
 -- vào 3 tháng cuối năm 2019 nhưng chưa từng được khách hàng đặt vào 6 tháng đầu năm 2019.
 
-select hd.IDHopDong, nv.HoTen, kh.HoTen, kh.SDT, dv.TenDichVu,  count(hdct.IDDichVuDiKem) as 'SoLuongDichVuDiKem' 
+select hd.IDHopDong, nv.HoTen, kh.HoTen, kh.SDT, dv.TenDichVu,hd.NgayLamHopDong, count(hdct.IDDichVuDiKem) as SoLuongDichVuDikem
 from HopDong hd
-join NhanVien nv on nv.IDNhanVien = hd.IDNhanVien
-join KhachHang kh on kh.IDKhachHang = hd.IDKhachHang
-join DichVu dv on dv.IDDichVu = hd.IDDichVu
-join HopDongChiTiet hdct on hdct.IDHopDong = hd.IDHopDong
-where (hd.NgayLamHopDong between '2019-10-01' and '2019-12-31') and (hd.NgayLamHopDong not between '2019-01-01' and '2019-06-30')
-group by hdct.IDHopDong;
--- chưa đúng
+left join NhanVien nv on nv.IDNhanVien = hd.IDNhanVien
+left join KhachHang kh on kh.IDKhachHang = hd.IDKhachHang
+left join DichVu dv on dv.IDDichVu = hd.IDDichVu
+left join HopDongChiTiet hdct on hdct.IDHopDong = hd.IDHopDong
+where (hd.NgayLamHopDong between '2019-10-01' and '2019-12-31') and (hd.NgayLamHopDong not between '2019-01-01' and '2019-06-31')
+group by hd.IDHopDong;
 
 -- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng.
 -- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
@@ -434,12 +438,11 @@ group by ldv.TenLoaiDichVu,dvdk.TenDichVuDiKem;
 -- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm 
 -- IDNhanVien, HoTen, TrinhDo, TenBoPhan, SoDienThoai, DiaChi mới chỉ lập được tối đa 3 hợp đồng từ năm 2018 đến 2019.
 
-select nv.IDNhanVien, nv.HoTen, td.TrinhDo, vt.TenViTri, bp.TenBoPhan, nv.SDT, nv.DiaChi
+select nv.IDNhanVien, nv.HoTen , td.TrinhDo, bp.TenBoPhan, nv.SDT , nv.DiaChi ,count(hd.IDNhanVien) as 'số lượng hợp đồng'
 from NhanVien nv 
 left join HopDong hd on hd.IDNhanVien = nv.IDNhanVien
-join TrinhDo td on td.IDTrinhDo = nv.IDTrinhDo
-join ViTri vt on vt.IDViTri = nv.IDViTri 
-join BoPhan bp on bp.IDBoPhan = nv.IDBoPhan
-where year(hd.NgayLamHopDong) between '2018'and '2019'
-group by hd.IDHopDong, hd.IDNhanVien
-having count(hd.IDNhanVien) <=3; 
+left join TrinhDo td on td.IDTrinhDo = nv.IDTrinhDo
+left join BoPhan bp on Bp.IDBoPhan = nv.IDBoPhan
+where (year(hd.NgayLamHopDong) between '2018' and '2019') or (nv.IDNhanVien not in (select HopDong.IDNhanVien from HopDong))
+group by nv.IDNhanVien
+having  count(hd.IDNhanVien) <=3 ;
