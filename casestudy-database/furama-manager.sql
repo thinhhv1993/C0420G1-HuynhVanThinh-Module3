@@ -452,7 +452,7 @@ from NhanVien nv
 left join HopDong hd on hd.IDNhanVien = nv.IDNhanVien
 join TrinhDo td on td.IDTrinhDo = nv.IDTrinhDo
 join BoPhan bp on Bp.IDBoPhan = nv.IDBoPhan
-where nv.IDNhanVien in (select HopDong.IDNhanVien from HopDong)
+where (nv.IDNhanVien in (select HopDong.IDNhanVien from HopDong)) or  (year(hd.NgayLamHopDong) not between '2018' and '2019')
 group by nv.IDNhanVien) as t
 group by IDNhanVien;
 
