@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 27/7/2020
+  Time: 9:11 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,9 +22,7 @@
     dic.put("how", "Thế nào");
     dic.put("book", "Quyển vở");
     dic.put("computer", "Máy tính");
-
     String search = request.getParameter("search");
-
     String result = dic.get(search);
     if (result != null) {
         out.println("Word: " + search);
@@ -25,8 +30,6 @@
     } else {
         out.println("Not found");
     }
-
 %>
-
 </body>
 </html>

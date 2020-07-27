@@ -7,9 +7,6 @@
         <element id="directory" name="classes">
           <element id="module-output" name="simple_dictionary" />
         </element>
-        <element id="directory" name="lib">
-          <element id="file-copy" path="$USER_HOME$/Downloads/jstl-1.2.jar" />
-        </element>
       </element>
     </root>
   </artifact>
