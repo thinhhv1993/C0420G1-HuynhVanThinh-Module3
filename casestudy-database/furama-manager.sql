@@ -417,13 +417,25 @@ group by hd.IDHopDong;
 
 -- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng.
 -- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
-select kh.HoTen, dvdk.TenDichVuDiKem , count(dvdk.TenDichVuDiKem) as 'soluong'
+
+select t.HoTen,t.TenDichVuDiKem, (t.soluong) from 
+(select kh.HoTen, dvdk.TenDichVuDiKem , count(dvdk.TenDichVuDiKem) as 'soluong'
 from HopDong hd
 join KhachHang kh on kh.IDKhachHang = hd.IDKhachHang
 join DichVu dv on dv.IDDichVu = hd.IDDichVu
 join HopDongChiTiet hdct on hdct.IDHopDong = hd.IDHopDong
 join DichVuDiKem dvdk on dvdk.IDDichVuDiKem = hdct.IDDichVuDiKem
-group by kh.HoTen, dvdk.TenDichVuDiKem;
+group by kh.HoTen, dvdk.TenDichVuDiKem) as t where t.soluong = (select count(dvdk.TenDichVuDiKem) as 'soluong'
+from HopDong hd
+join KhachHang kh on kh.IDKhachHang = hd.IDKhachHang
+join DichVu dv on dv.IDDichVu = hd.IDDichVu
+join HopDongChiTiet hdct on hdct.IDHopDong = hd.IDHopDong
+join DichVuDiKem dvdk on dvdk.IDDichVuDiKem = hdct.IDDichVuDiKem
+group by kh.HoTen, dvdk.TenDichVuDiKem
+order by soluong desc
+limit 1)
+;
+
 
 -- 14.	Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất.
 -- Thông tin hiển thị bao gồm IDHopDong, TenLoaiDichVu, TenDichVuDiKem, SoLanSuDung.
@@ -443,7 +455,7 @@ from NhanVien nv
 left join HopDong hd on hd.IDNhanVien = nv.IDNhanVien
  join TrinhDo td on td.IDTrinhDo = nv.IDTrinhDo
  join BoPhan bp on Bp.IDBoPhan = nv.IDBoPhan
-where (year(hd.NgayLamHopDong)  between '2018' and '2019') or(nv.IDNhanVien not in (select HopDong.IDNhanVien from HopDong))
+where (year(hd.NgayLamHopDong)  between '2018' and '2019') or (nv.IDNhanVien not in (select HopDong.IDNhanVien from HopDong)) 
 group by nv.IDNhanVien
 having  count(hd.IDNhanVien) <=3 
 union 
@@ -452,9 +464,14 @@ from NhanVien nv
 left join HopDong hd on hd.IDNhanVien = nv.IDNhanVien
 join TrinhDo td on td.IDTrinhDo = nv.IDTrinhDo
 join BoPhan bp on Bp.IDBoPhan = nv.IDBoPhan
-where (nv.IDNhanVien in (select HopDong.IDNhanVien from HopDong)) or  (year(hd.NgayLamHopDong) not between '2018' and '2019')
-group by nv.IDNhanVien) as t
-group by IDNhanVien;
+where hd.IDNhanVien not in (select nv.IDNhanVien
+		from NhanVien nv 
+		join HopDong hd on hd.IDNhanVien = nv.IDNhanVien
+		where year(hd.NgayLamHopDong) between '2018' and '2019') 
+group by nv.IDNhanVien ) as t group by t.IDNhanVien;
+
+
+ 
 
 -- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.
 delete from NhanVien nv where nv.IDNhanVien in ( select IDNhanVien from  (select * from NhanVien nv
