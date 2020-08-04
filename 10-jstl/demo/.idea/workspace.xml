@@ -2,24 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ccb6cc0-62fb-4874-9c33-e65f73f509e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../baitap/bai1-hien-thi-danh-sach-khach-hang/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../baitap/bai2-ung-dung-calculator/src/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../baitap/bai2-ung-dung-calculator/src/CalculatorServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../baitap/test/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/web/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../8-bootstrap/baitap/bai2-xay-dung-landing-page/landingpage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/.idea/tudien.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/.idea/artifacts/simple_dictionary_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/.idea/artifacts/simple_dictionary_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/out/artifacts/simple_dictionary_war_exploded/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/out/artifacts/simple_dictionary_war_exploded/dictionary.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/out/artifacts/simple_dictionary_war_exploded/dictionary.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/out/artifacts/simple_dictionary_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/out/artifacts/simple_dictionary_war_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/simple_dictionary.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/simple_dictionary.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/web/dictionary.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/web/dictionary.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../thuchanh/tudien/simple_dictionary/web/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/.idea/artifacts/java_web_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/java-web.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/src/controller/ProductServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/src/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/src/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/src/service/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/baitap/java-web/web/product/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc/java-web-mvc.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc/src/controller/CustomerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc/src/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc/src/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc/src/service/CustomerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc/web/customer/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/.idea/artifacts/java_web_mvc1_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/java-web-mvc1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/src/controller/CustomerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/src/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/src/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/src/service/CustomerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/web/customer/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/web/customer/delete.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/web/customer/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/web/customer/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../11-MVC/thuchanh/java-web-mvc1/web/customer/view.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../8-bootstrap/baitap/bai2-xay-dung-landing-page/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baitap/bai1-customer/customer-display/out/production/customer-display/META-INF/customer-display.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8-bootstrap/baitap/bai2-xay-dung-landing-page/landingpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../8-bootstrap/baitap/bai2-xay-dung-landing-page/landingpage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +63,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/c04g-jstl" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -56,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1595863220217</updated>
       <workItem from="1595863221502" duration="27000" />
+      <workItem from="1596443349220" duration="357000" />
     </task>
     <servers />
   </component>
