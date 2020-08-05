@@ -24,7 +24,7 @@ public class SearchServlet extends HttpServlet {
             Product product = this.productService.findByName(name);
             RequestDispatcher dispatcher;
             if(product == null){
-                dispatcher = request.getRequestDispatcher("error-404.jsp");
+                dispatcher = request.getRequestDispatcher("product/list.jsp");
             } else {
                 request.setAttribute("product", product);
                 dispatcher = request.getRequestDispatcher("product/view.jsp");

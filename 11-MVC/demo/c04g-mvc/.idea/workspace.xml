@@ -6,7 +6,40 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c19bacff-dd54-4589-b7b0-382d9e1bcc2e" name="Default Changelist" comment="" />
+    <list default="true" id="c19bacff-dd54-4589-b7b0-382d9e1bcc2e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/.idea/artifacts/WebApplication_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/WebApplication/src/bo/IUserBo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/WebApplication/src/bo/UserBo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/WebApplication/src/controller/UserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/WebApplication/src/dao/IUserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/WebApplication/src/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/WebApplication/web/user/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/WebApplication/web/user/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/WebApplication/web/user/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/WebApplication/web/user/view.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/baitap/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/demo/c04g-jstl-jdbc/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/thuchanh/WebApplication/src/controller/UserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/thuchanh/WebApplication/src/dao/IUserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/thuchanh/WebApplication/src/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/thuchanh/WebApplication/src/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/thuchanh/WebApplication/web/user/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/thuchanh/WebApplication/web/user/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../12- jdbc-crud/thuchanh/WebApplication/web/user/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap/java-web/out/artifacts/java_web_war_exploded/WEB-INF/classes/controller/SearchServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap/java-web/out/artifacts/java_web_war_exploded/WEB-INF/classes/controller/SearchServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap/java-web/out/artifacts/java_web_war_exploded/product/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap/java-web/out/artifacts/java_web_war_exploded/product/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap/java-web/out/production/java-web/controller/SearchServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap/java-web/out/production/java-web/controller/SearchServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap/java-web/src/controller/SearchServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap/java-web/src/controller/SearchServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap/java-web/web/product/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap/java-web/web/product/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c04g-mvc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/c04g-mvc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../casestudy-database/furama-manager.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../casestudy-database/furama-manager.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +53,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -28,6 +64,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1fZyjVSt6BJFa4PQydVLNd6MFQb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -35,9 +72,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/Codegym/002-teach/02-theory-support/jsp/jsp-jstl/jstl-1.2.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.16015625" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -157,6 +195,10 @@
       <option name="presentableId" value="Default" />
       <updated>1596440044071</updated>
       <workItem from="1596440049954" duration="2672000" />
+      <workItem from="1596506318186" duration="1310000" />
+      <workItem from="1596511304015" duration="5000" />
+      <workItem from="1596512854909" duration="635000" />
+      <workItem from="1596535434611" duration="319000" />
     </task>
     <servers />
   </component>

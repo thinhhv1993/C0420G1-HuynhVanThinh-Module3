@@ -10,6 +10,7 @@
     <a href="/products?action=create">Create new products</a>
 </p>
 <form method="get" action="/findName">
+<%--    <input type="hidden" name="action" value="search">--%>
     <fieldset>
 <p>Search name product : </p>
 <input type="text" name="name" id="name" >

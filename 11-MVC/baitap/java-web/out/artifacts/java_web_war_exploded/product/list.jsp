@@ -9,10 +9,11 @@
 <p>
     <a href="/products?action=create">Create new products</a>
 </p>
-<form method="get" action="/findName">
+<form method="get" action="/products">
+    <input type="hidden" name="action" value="edit">
     <fieldset>
 <p>Search name product : </p>
-<input type="text" name="name" id="name" >
+<input type="text" name="id" id="id" >
 <input type="submit" value="View product">
     </fieldset>
 </form>
