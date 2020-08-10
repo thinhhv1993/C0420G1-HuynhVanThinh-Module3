@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="/asset/bootstrap-4.5.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/asset/css/fontawesome.min.css">
     <link rel="stylesheet" href="/asset/css/brands.min.css">
-    <link rel="stylesheet" href="/asset/css/all.min.css" %>
+    <link rel="stylesheet" href="/asset/css/all.min.css">
     <style type="text/css">
         @font-face {
             font-family: 'Lemonada', cursive;
         }
         * {
             font-family: 'Lemonada', cursive;
+     
         }
         h3.tieude{
             text-align: center;
@@ -24,9 +25,12 @@
         a{
             margin: 10px;
         }
+        body {
+            background-image: url("/image/94321578-notebook-and-a-green-pencil-on-yellow-background-office-theme-.jpg");
+        }
     </style>
 </head>
-<body class="p-3 mb-2 bg-light text-dark">
+<body class="p-3 mb-2 bg-light text-dark" >
 <caption><h3 class="tieude">Các Ghi Chú</h3></caption>
 <div align="center">
     <form method="post" action="/notes">

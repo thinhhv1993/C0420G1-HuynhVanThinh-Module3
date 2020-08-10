@@ -18,6 +18,9 @@
         a{
             margin: 10px;
         }
+        body {
+            background-image: url("/image/94321578-notebook-and-a-green-pencil-on-yellow-background-office-theme-.jpg");
+        }
     </style>
 </head>
 <body>
